@@ -20,17 +20,15 @@ grad = zeros(size(theta));
 %
 
 
+htheta = X * theta;
+sqrErrors = (htheta - y).^2;
 
+J = 1/(2*m)* sum(sqrErrors)+ (lambda/(2*m))*( sum(theta(2:end).^2) );
 
+grad = ((X' * (htheta - y)) ./m) + (lambda./m).*theta
+grad(1) = grad(1) - (lambda./m).*theta(1)
 
-
-
-
-
-
-
-
-% =========================================================================
+% ========================================================================
 
 grad = grad(:);
 
